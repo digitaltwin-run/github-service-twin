@@ -106,7 +106,9 @@ def test_real_onedev_github_client_works_against_local_twin(tmp_path: Path, git_
         assert issues[0].title == "Autonomous issue"
 
         snap = client.branch_lifecycle_snapshot("maskservice/viewer")
-        assert snap["default_branch"] == "main"
+        assert snap["schema"] == "new-project.branch-lifecycle-snapshot/v1"
+        assert snap["defaultBranch"] == "main"
+        assert snap["deleteBranchOnMerge"] is True
         assert git_repo_pair.branch_name in snap["branches"]
     finally:
         httpd.shutdown()

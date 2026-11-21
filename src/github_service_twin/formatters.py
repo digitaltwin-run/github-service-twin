@@ -12,6 +12,7 @@ def format_repo(base_web_url: str, repo: TwinRepository) -> dict[str, Any]:
         "full_name": repo.full_name,
         "name": repo.full_name.split("/", 1)[1],
         "default_branch": repo.default_branch,
+        "delete_branch_on_merge": True,
         "clone_url": repo.local_path,
         "private": repo.private,
         "archived": repo.archived,
